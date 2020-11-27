@@ -55,15 +55,18 @@ def is_minterm_subset(m1,m2):
             return False
     return True
 
-# Funtion which groups minterms according to the number of nonzero digets
+# Funtion which groups minterms according to the number of nonzero digits
+
+# Definition: a minterm of n variables is a product of the variables
+#             in which each appears exactly once in true or complemented form.
 
 # Paramters: truth table, 
-#            column_number- define the number of possible nonzero digits
-#            cares- indexes which correspond to original minterms
-#            outputcolumns- the whole binary output cols from original data
-#            multi_output- bolean variable
+#            column_number - defines the number of possible nonzero digits
+#            cares - indexes corresponding to the positive minterms in the original data
+#            outputcolumns - binary output columns from the original data
+#            multi_output - a bolean variable
 # Output: an array res of objects from classes Multi_value_item or
-#         Multiple_output_item, an i-th element of an array consist of 
+#         Multiple_output_item, the i-th element of an array consist of 
 #         objects whose minterms have exactly i nonzero digits
 
 
@@ -101,16 +104,16 @@ def create_groups(table,column_number, cares, outputcolumns, multi_output):
 
 # Function preforming 1 step elimination of 2 minterms
 
-# Function eliminates minterms firstly in adjacting groups, secondly
-# in between the group. In both cases minterms differ only in one sigle digit.
-# Moreover, the function collects implicants, which can't be further eliminate
+# The function eliminates minterms differing with only one single digit 
+# first in adjacting groups, second inside the group. 
+# In addition, the function collects implicants, which can't be further eliminated
 # to an array- final implicants.
-# Parameters: groups- an array returned by fun create_groups
-#             n- number of rows of a truth table
-#             multi_output- bolean variable
-# Output: dictionary, which contains new groups after elimination, implicants,
-#         information whether any reduction was perform in this single
-#         elimination
+# Parameters: groups - an array returned by fun create_groups
+#             n - the number of rows in the truth table
+#             multi_output - a bolean variable
+# Output: dictionary, which contains new groups after the elimination process, 
+#         implicants, information whether any reduction was performed in this
+#         single elimination step
   
 def reduction_step(groups,n,multi_output):
     was_any_reduction = False
@@ -231,7 +234,7 @@ def find_index2(arr, x):
 
 
 """
-Optimization Context contaion all data and information necessery to preform
+Optimization Context contains all data and information necessery to preform
 the computation.
 
 Parameters
